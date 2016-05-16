@@ -18,7 +18,7 @@ describe('calculatePoints', function () {
     expect(calculatePoints([{ point: 13, suit: 'diamonds'} ])).toEqual(10);
   });
 
-  xit('picks 1 or 11 for Ace depending if it busts', function () {
+  it('picks 1 or 11 for Ace depending if it busts', function () {
     expect(calculatePoints([
       { point: 10, suit: 'diamonds' },
       { point: 1, suit: 'diamonds' }

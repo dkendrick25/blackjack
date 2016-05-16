@@ -29,11 +29,27 @@ function dealCard(deck, hand, element) {
 //calculate points - takes hand (array of cards) and returns point value
 //of that hand
 function calculatePoints(hand) {
+  //creates a new array
+  hand.slice(0);
+  //compare cards to sort them
+  //if a > b ... num greater than 0
+  //if a < b ... num is less than 0
+  //if a = b ... num is equal to 0
+  function compare(card1, card2) {
+    return card2.point - card1.point;
+  }
+  hand.sort(compare);
   var points = 0;
   for(var i = 0; i < hand.length; i++) {
     var card = hand[i];
-  if (card.point >= 10) {
+  if (card.point > 10) {
       points = points + 10;
+    } else if (card.point === 1) {
+      if (points + 11 <= 21) {
+        points = points + 11;
+      } else {
+        points = points + 1;
+      }
     } else {
       points = points + card.point;
     }
