@@ -58,7 +58,7 @@ function checkForBusts() {
   }
   var dealerPoints = calculatePoints(dealerHand);
   if (dealerPoints > 21) {
-    $('#messages').text("Dealer busted. Better luck next time!");
+    $('#messages').text("Dealer busted. You won!");
     return true;
   }
   return false;
