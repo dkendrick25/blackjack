@@ -1,5 +1,5 @@
 describe('calculatePoints', function () {
-  xit('adds face values for 2-9', function () {
+  it('adds face values for 2-9', function () {
     var cards = [{ point: 2, suit: 'diamonds' }];
     expect(calculatePoints(cards)).toEqual(2);
     cards = [{ point: 9, suit: 'diamonds' }];
@@ -11,7 +11,7 @@ describe('calculatePoints', function () {
     expect(calculatePoints(cards)).toEqual(11);
   });
 
-  xit('values 10, Jack, Queen and King at 10 points', function () {
+  it('values 10, Jack, Queen and King at 10 points', function () {
     expect(calculatePoints([{ point: 10, suit: 'diamonds'} ])).toEqual(10);
     expect(calculatePoints([{ point: 11, suit: 'diamonds'} ])).toEqual(10);
     expect(calculatePoints([{ point: 12, suit: 'diamonds'} ])).toEqual(10);
@@ -38,17 +38,17 @@ describe('calculatePoints', function () {
 });
 
 describe('getCardImageUrl', function () {
-  xit('works for aces', function () {
+  it('works for aces', function () {
     expect(getCardImageUrl({ point: 1, suit: 'diamonds' }))
       .toEqual('images/ace_of_diamonds.png');
   });
-  xit('works for 2 - 10', function () {
+  it('works for 2 - 10', function () {
     for (var i = 2; i <= 10; i++) {
       expect(getCardImageUrl({ point: i, suit: 'diamonds' }))
         .toEqual('images/' + i + '_of_diamonds.png');
     }
   });
-  xit('works for jack, queen, and king', function () {
+  it('works for jack, queen, and king', function () {
     expect(getCardImageUrl({ point: 11, suit: 'diamonds' }))
       .toEqual('images/jack_of_diamonds.png');
     expect(getCardImageUrl({ point: 12, suit: 'diamonds' }))

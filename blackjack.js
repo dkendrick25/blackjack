@@ -22,19 +22,24 @@ function dealCard(hand, element) {
   //adds card to hand
   hand.push(card);
   //adds card to HTML
-  var cardHTML = '<div class="card">' + card.point + 'of' + card.suit + '</div>';
-  $(elementID).append(cardHTML);
+  var cardHTML = '<img class="card" src="' + getCardImageUrl(card) + '"/>';
+  $(element).append(cardHTML);
 };
 
 //calculate points - takes hand (array of cards) and returns point value
 //of that hand
 function calculatePoints(hand) {
-  var sum = 0;
-  for (var i = 0; i < hand.length; i++) {
+  var points = 0;
+  for(var i = 0; i < hand.length; i++) {
     var card = hand[i];
-    sum = sum + card.point;
+    if (card.point >= 10) {
+      points += 10;
+    } else {
+      points += card.point;
+    }
   }
-  return sum;
+  }
+  return
 };
 //calculate the Points using calculatePoints for both the dealer
 //and player and will update the display with the Points
@@ -79,8 +84,41 @@ function resetGame() {
   $('#player-hand').html('');
   $('#dealer-hand').html('');
 }
+//function that diplays dynamtically the card img for the card
+function getCardImageUrl(card) {
+  var cardName;
+  if(card.point === 1) {
+    cardName = 'ace';
+  } else if(card.point === 2){
+    cardName = '2';
+  } else if(card.point === 3) {
+    cardName = '3';
+  } else if(card.point === 4) {
+    cardName = '4';
+  } else if(card.point === 5) {
+    cardName = '5';
+  } else if(card.point === 6) {
+    cardName = '6';
+  } else if(card.point === 7) {
+    cardName = '7';
+  } else if(card.point === 8) {
+    cardName = '8';
+  } else if(card.point === 9) {
+    cardName = '9';
+  } else if(card.point === 10) {
+    cardName = '10';
+  } else if(card.point === 11) {
+    cardName = 'jack';
+  } else if (card.point === 12) {
+    cardName = 'queen';
+  } else if (card.point === 13) {
+    cardName = 'king';
+  }
+  var result = 'images/' + cardName + '_of_' + card.suit + '.png';
+  return result;
+};
 
-  $(function () {
+  $(function() {
     $('#deal-button').click(function() {
       resetGame();
       dealCard(playerHand, '#player-hand');
