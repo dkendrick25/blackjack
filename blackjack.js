@@ -79,30 +79,14 @@ function getCardImageUrl(card) {
   var cardName;
   if(card.point === 1) {
     cardName = 'ace';
-  } else if(card.point === 2){
-    cardName = '2';
-  } else if(card.point === 3) {
-    cardName = '3';
-  } else if(card.point === 4) {
-    cardName = '4';
-  } else if(card.point === 5) {
-    cardName = '5';
-  } else if(card.point === 6) {
-    cardName = '6';
-  } else if(card.point === 7) {
-    cardName = '7';
-  } else if(card.point === 8) {
-    cardName = '8';
-  } else if(card.point === 9) {
-    cardName = '9';
-  } else if(card.point === 10) {
-    cardName = '10';
   } else if(card.point === 11) {
     cardName = 'jack';
   } else if (card.point === 12) {
     cardName = 'queen';
   } else if (card.point === 13) {
     cardName = 'king';
+  } else {
+    cardName = card.point;
   }
   var result = 'images/' + cardName + '_of_' + card.suit + '.png';
   return result;
