@@ -59,7 +59,7 @@ describe('getCardImageUrl', function () {
 });
 
 describe('newDeck', function () {
-  xit('has all the cards', function () {
+  it('has all the cards', function () {
     var deck = newDeck();
     expect(deck.length).toEqual(52);
     var stringRepresentation = deck.map(function(card) {

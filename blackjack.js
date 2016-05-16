@@ -117,6 +117,30 @@ function getCardImageUrl(card) {
   return result;
 };
 
+//new deck which creates a deck of the 52 standard poker cards
+//as an array of card objects
+function newDeck() {
+  var deck = [];
+  var suites = ['spades', 'hearts', 'clubs', 'diamonds'];
+  for (var point = 1; point <= 13; point++) {
+    for (var j = 0; j < suites.length; j++) {
+      var suite = suites[j];
+      deck.push({point: point, suite: suite});
+    }
+  }
+  return deck;
+};
+
+//shuffling a deck- take a random card from the newDeck function and
+//put it on top of new deck until deck is empty
+function shuffle(newDeck) {
+  var shuffledDeck = [];
+  for(var i = 0; i < newDeck.length; i++) {
+
+  }
+
+}
+
   $(function() {
     $('#deal-button').click(function() {
       resetGame();
