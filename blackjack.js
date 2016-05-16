@@ -15,14 +15,19 @@ var dealerHand = [];
 var playerHand = [];
 
 //takes playerHand or dealerHand and element for appending HTML
-function dealCard(deck, hand, element) {
+function dealCard(deck, hand, element, holecard) {
   //var card;
   //takes card from deck
   card = deck.pop();
   //adds card to hand
   hand.push(card);
   //adds card to HTML
-  var cardHTML = '<img class="card animated slideInLeft" src="' + getCardImageUrl(card) + '"/>';
+  var cardHTML;
+  if (holecard) {
+  cardHTML = '<img class="card animated slideInLeft hole" src="images/back_of_card.jpeg" alt="' + getCardImageUrl(card) + '"/>';
+  } else {
+  cardHTML = '<img class="card animated slideInLeft" src="' + getCardImageUrl(card) + '"/>';
+}
   $(element).append(cardHTML);
 };
 
@@ -139,7 +144,7 @@ function shuffle(cards) {
       var card;
       resetGame();
       dealCard(deck, playerHand, '#player-hand');
-      dealCard(deck, dealerHand, '#dealer-hand');
+      dealCard(deck, dealerHand, '#dealer-hand', true);
       dealCard(deck, playerHand, '#player-hand');
       dealCard(deck, dealerHand, '#dealer-hand');
       displayPoints();
