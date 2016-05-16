@@ -22,7 +22,8 @@ function dealCard(deck, hand, element) {
   //adds card to hand
   hand.push(card);
   //adds card to HTML
-  var cardHTML = '<img class="card" src="' + getCardImageUrl(card) + '"/>';
+  var cardHTML;
+  cardHTML = '<img class="card" src="' + getCardImageUrl(card) + '"/>';
   $(element).append(cardHTML);
 };
 
@@ -174,4 +175,4 @@ function shuffle(cards) {
         }
       }
     });
-    });
+  });
