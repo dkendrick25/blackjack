@@ -86,7 +86,7 @@ function resetGame() {
   playerHand = [];
   $('#player-points').text('');
   $('#dealer-points').text('');
-  $('#message').text('');
+  $('#messages').text('');
   $('#player-hand').html('');
   $('#dealer-hand').html('');
 }
