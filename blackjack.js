@@ -76,7 +76,7 @@ function resetGame() {
 }
 //function that diplays dynamtically the card img for the card
 function getCardImageUrl(card) {
-  //var cardName;
+  var cardName;
   if(card.point === 1) {
     cardName = 'ace';
   } else if(card.point === 2){
