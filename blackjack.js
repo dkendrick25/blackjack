@@ -32,14 +32,13 @@ function calculatePoints(hand) {
   var points = 0;
   for(var i = 0; i < hand.length; i++) {
     var card = hand[i];
-    if (card.point >= 10) {
-      points += 10;
+  if (card.point >= 10) {
+      points = points + 10;
     } else {
-      points += card.point;
+      points = points + card.point;
     }
   }
-  }
-  return
+  return points;
 };
 //calculate the Points using calculatePoints for both the dealer
 //and player and will update the display with the Points
