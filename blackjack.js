@@ -1,6 +1,6 @@
-var card = {point: 5, suit: 'diamonds'};
 
-var deck = [
+var deck = shuffle(newDeck());
+/* Test code [
   { point: 9, suit: 'diamonds' },
   { point: 1, suit: 'spades' },
   { point: 5, suit: 'clubs' },
@@ -9,14 +9,14 @@ var deck = [
   { point: 6, suit: 'clubs' },
   { point: 3, suit: 'hearts' },
   { point: 9, suit: 'spades' }
-];
+];*/
 
 var dealerHand = [];
 var playerHand = [];
 
 //takes playerHand or dealerHand and element for appending HTML
-function dealCard(hand, element) {
-  var card;
+function dealCard(deck, hand, element) {
+  //var card;
   //takes card from deck
   card = deck.pop();
   //adds card to hand
@@ -65,16 +65,7 @@ function checkForBusts() {
 };
 
 function resetGame() {
-  deck = [
-    { point: 9, suit: 'diamonds' },
-    { point: 1, suit: 'spades' },
-    { point: 5, suit: 'clubs' },
-    { point: 10, suit: 'hearts' },
-    { point: 2, suit: 'diamonds' },
-    { point: 6, suit: 'clubs' },
-    { point: 3, suit: 'hearts' },
-    { point: 9, suit: 'spades' }
-  ];
+  deck = shuffle(newDeck());
   dealerHand = [];
   playerHand = [];
   $('#player-points').text('');
@@ -85,7 +76,7 @@ function resetGame() {
 }
 //function that diplays dynamtically the card img for the card
 function getCardImageUrl(card) {
-  var cardName;
+  //var cardName;
   if(card.point === 1) {
     cardName = 'ace';
   } else if(card.point === 2){
@@ -121,33 +112,36 @@ function getCardImageUrl(card) {
 //as an array of card objects
 function newDeck() {
   var deck = [];
-  var suites = ['spades', 'hearts', 'clubs', 'diamonds'];
+  var suits = ['spades', 'hearts', 'clubs', 'diamonds'];
   for (var point = 1; point <= 13; point++) {
-    for (var j = 0; j < suites.length; j++) {
-      var suite = suites[j];
-      deck.push({point: point, suite: suite});
+    for (var i = 0; i < suits.length; i++) {
+      var suit = suits[i];
+      deck.push({point: point, suit: suit});
     }
   }
   return deck;
 };
 
-//shuffling a deck- take a random card from the newDeck function and
+//shuffling a newdeck- take a random card from the newDeck function and
 //put it on top of new deck until deck is empty
-function shuffle(newDeck) {
-  var shuffledDeck = [];
-  for(var i = 0; i < newDeck.length; i++) {
-
+function shuffle(cards) {
+  var newCards = [];
+  while (cards.length > 0) {
+    var idx = Math.floor(Math.random() * cards.length);
+    newCards.push(cards[idx]);
+    cards.splice(idx, 1);
   }
-
+  return newCards;
 }
 
   $(function() {
     $('#deal-button').click(function() {
+      var card;
       resetGame();
-      dealCard(playerHand, '#player-hand');
-      dealCard(dealerHand, '#dealer-hand');
-      dealCard(playerHand, '#player-hand');
-      dealCard(dealerHand, '#dealer-hand');
+      dealCard(deck, playerHand, '#player-hand');
+      dealCard(deck, dealerHand, '#dealer-hand');
+      dealCard(deck, playerHand, '#player-hand');
+      dealCard(deck, dealerHand, '#dealer-hand');
       displayPoints();
       checkForBusts();
 
@@ -155,7 +149,7 @@ function shuffle(newDeck) {
 
     //hit deals one card
     $('#hit-button').click(function() {
-      dealCard(playerHand, '#player-hand');
+      dealCard(deck, playerHand, '#player-hand');
       displayPoints();
       checkForBusts();
     });
@@ -163,7 +157,7 @@ function shuffle(newDeck) {
     $('#stand-button').click(function() {
       var dealerPoints = calculatePoints(dealerHand);
       while(dealerPoints < 17) {
-        dealCard(dealerHand, '#dealer-hand');
+        dealCard(deck, dealerHand, '#dealer-hand');
         dealerPoints = calculatePoints(dealerHand);
       }
       displayPoints();
