@@ -183,4 +183,9 @@ function shuffle(cards) {
         }
       }
     });
+    $('#bet-button').click(function() {
+      var currentPlayerMoney = Number($('#player-money').text());
+      var newMoney = currentPlayerMoney - 100;
+      $('#player-money').text('$' + newMoney)
+    })
   });
