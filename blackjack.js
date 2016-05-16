@@ -63,11 +63,13 @@ function calculatePoints(hand) {
 };
 //calculate the Points using calculatePoints for both the dealer
 //and player and will update the display with the Points
-function displayPoints() {
-  var dealerPoints = calculatePoints(dealerHand);
-  $('#dealer-points').text(dealerPoints);
+function displayPlayerPoints() {
   var playerPoints = calculatePoints(playerHand);
   $('#player-points').text(playerPoints);
+};
+function displayDealerPoints() {
+  var dealerPoints = calculatePoints(dealerHand);
+  $('#dealer-points').text(dealerPoints);
 };
 //calculatePoints to get points for both dealer and player and display
 //message when someone busts. Returns true if there was a bust
@@ -147,7 +149,7 @@ function shuffle(cards) {
       dealCard(deck, dealerHand, '#dealer-hand', true);
       dealCard(deck, playerHand, '#player-hand');
       dealCard(deck, dealerHand, '#dealer-hand');
-      displayPoints();
+      displayPlayerPoints();
       checkForBusts();
 
     });
@@ -155,7 +157,7 @@ function shuffle(cards) {
     //hit deals one card
     $('#hit-button').click(function() {
       dealCard(deck, playerHand, '#player-hand');
-      displayPoints();
+      displayPlayerPoints();
       checkForBusts();
     });
     //will continue to deal to the dealer until hits 17
@@ -165,8 +167,10 @@ function shuffle(cards) {
         dealCard(deck, dealerHand, '#dealer-hand');
         dealerPoints = calculatePoints(dealerHand);
       }
-      displayPoints();
+      displayPlayerPoints();
+      displayDealerPoints();
       if (!checkForBusts()) {
+        displayDealerPoints();
         //determine winner
         var playerPoints = calculatePoints(playerHand);
         var dealerPoints = calculatePoints(dealerHand);
