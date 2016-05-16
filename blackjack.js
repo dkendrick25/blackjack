@@ -22,8 +22,7 @@ function dealCard(deck, hand, element) {
   //adds card to hand
   hand.push(card);
   //adds card to HTML
-  var cardHTML;
-  cardHTML = '<img class="card" src="' + getCardImageUrl(card) + '"/>';
+  var cardHTML = '<img class="card animated slideInLeft" src="' + getCardImageUrl(card) + '"/>';
   $(element).append(cardHTML);
 };
 

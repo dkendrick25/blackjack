@@ -1,6 +1,5 @@
 body {
   font-family: "Helvetica Neue", sans-serif;
-  color: gray;
 }
 
 * {
@@ -10,9 +9,10 @@ body {
 
 #table {
   padding: 80px 50px;
-  border: 4px solid #6b4200;
+  border: 3px solid black;
   border-radius: 40px;
   background: linear-gradient(#9fe558 0%, #8edb3d 40%, #67c200 100%) no-repeat no-repeat;
+  box-shadow: 0 1px 3px 3px;
 }
 
 .hand {
