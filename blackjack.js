@@ -185,9 +185,9 @@ function shuffle(cards) {
     });
 
     $('#bet-button').click(function() {
-      debugger
       var currentPlayerMoney = Number($('#player-money').text());
       var total = currentPlayerMoney - 100;
       $('#player-money').text(total);
+      var totalBet = 500 - Number($('#player-money').text());
     })
   });
