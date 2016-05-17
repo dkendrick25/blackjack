@@ -77,11 +77,13 @@ function checkForBusts() {
   var playerPoints = calculatePoints(playerHand);
   if (playerPoints > 21) {
     $('#messages').text("You busted. Better luck next time!");
+    $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
     return true;
   }
   var dealerPoints = calculatePoints(dealerHand);
   if (dealerPoints > 21) {
     $('#messages').text("Dealer busted. You won!");
+    $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
     return true;
   }
   return false;
@@ -168,6 +170,7 @@ function shuffle(cards) {
         dealerPoints = calculatePoints(dealerHand);
       }
       displayPlayerPoints();
+      $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
       displayDealerPoints();
       if (!checkForBusts()) {
         displayDealerPoints();
