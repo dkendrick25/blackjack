@@ -98,6 +98,8 @@ function resetGame() {
   $('#messages').text('');
   $('#player-hand').html('');
   $('#dealer-hand').html('');
+  $('#hit-button').prop('disabled', false);
+ $('#stand-button').prop('disabled', false);
 }
 //function that diplays dynamtically the card img for the card
 function getCardImageUrl(card) {
@@ -179,10 +181,16 @@ function shuffle(cards) {
         var dealerPoints = calculatePoints(dealerHand);
         if (playerPoints > dealerPoints) {
           $('#messages').text('YOU WON!');
+          $('#hit-button').prop('disabled', true);
+          $('#stand-button').prop('disabled', true);
         } else if (playerPoints === dealerPoints) {
           $('#messages').text('Push');
+          $('#hit-button').prop('disabled', true);
+          $('#stand-button').prop('disabled', true);
         } else {
           $('#messages').text('Sorry, You lose!');
+          $('#hit-button').prop('disabled', true);
+          $('#stand-button').prop('disabled', true);
         }
       }
     });
