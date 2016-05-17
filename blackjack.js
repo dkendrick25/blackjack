@@ -183,9 +183,11 @@ function shuffle(cards) {
         }
       }
     });
+
     $('#bet-button').click(function() {
+      debugger
       var currentPlayerMoney = Number($('#player-money').text());
-      var newMoney = currentPlayerMoney - 100;
-      $('#player-money').text('$' + newMoney)
+      var total = currentPlayerMoney - 100;
+      $('#player-money').text(total);
     })
   });
