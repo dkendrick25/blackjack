@@ -47,7 +47,7 @@ function calculatePoints(hand) {
   var points = 0;
   for(var i = 0; i < hand.length; i++) {
     var card = hand[i];
-  if (card.point > 10) {
+    if (card.point > 10) {
       points = points + 10;
     } else if (card.point === 1) {
       if (points + 11 <= 21) {
@@ -99,7 +99,7 @@ function resetGame() {
   $('#player-hand').html('');
   $('#dealer-hand').html('');
   $('#hit-button').prop('disabled', false);
- $('#stand-button').prop('disabled', false);
+  $('#stand-button').prop('disabled', false);
 }
 //function that diplays dynamtically the card img for the card
 function getCardImageUrl(card) {
