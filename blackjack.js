@@ -183,6 +183,9 @@ function shuffle(cards) {
           $('#messages').text('YOU WON!');
           $('#hit-button').prop('disabled', true);
           $('#stand-button').prop('disabled', true);
+          var currentPlayerMoney = Number($('#player-money').text());
+          var totalBet = 500 - currentPlayerMoney;
+          $('#player-money').text(currentPlayerMoney + totalBet);
         } else if (playerPoints === dealerPoints) {
           $('#messages').text('Push');
           $('#hit-button').prop('disabled', true);
