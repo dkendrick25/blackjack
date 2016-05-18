@@ -78,12 +78,18 @@ function checkForBusts() {
   if (playerPoints > 21) {
     $('#messages').text("You busted. Better luck next time!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
+    var currentPlayerMoney = Number($('#player-money').text());
+    var totalBet = 500 - currentPlayerMoney;
+    $('#player-money').text(currentPlayerMoney - totalBet);
     return true;
   }
   var dealerPoints = calculatePoints(dealerHand);
   if (dealerPoints > 21) {
     $('#messages').text("Dealer busted. You won!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
+    var currentPlayerMoney = Number($('#player-money').text());
+    var totalBet = 500 - currentPlayerMoney;
+    $('#player-money').text(currentPlayerMoney + totalBet);
     return true;
   }
   return false;
@@ -183,6 +189,7 @@ function shuffle(cards) {
           $('#messages').text('YOU WON!');
           $('#hit-button').prop('disabled', true);
           $('#stand-button').prop('disabled', true);
+          //to give player table money
           var currentPlayerMoney = Number($('#player-money').text());
           var totalBet = 500 - currentPlayerMoney;
           $('#player-money').text(currentPlayerMoney + totalBet);
