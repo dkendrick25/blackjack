@@ -203,5 +203,9 @@ function shuffle(cards) {
       var total = currentPlayerMoney - 100;
       $('#player-money').text(total);
       var totalBet = 500 - Number($('#player-money').text());
+      if (currentPlayerMoney <= 0) {
+        alert('You are out of Money!! No, worries here is more');
+        $('#player-money').text('500');
+      }
     })
   });
