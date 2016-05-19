@@ -89,7 +89,7 @@ function checkForBusts() {
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
     var currentPlayerMoney = Number($('#player-money').text());
     var totalBet = 500 - currentPlayerMoney;
-    $('#player-money').text(currentPlayerMoney + totalBet);
+    $('#player-money').text(currentPlayerMoney + totalBet + totalBet);
     return true;
   }
   return false;
@@ -192,7 +192,7 @@ function shuffle(cards) {
           //to give player table money
           var currentPlayerMoney = Number($('#player-money').text());
           var totalBet = 500 - currentPlayerMoney;
-          $('#player-money').text(currentPlayerMoney + totalBet);
+          $('#player-money').text(currentPlayerMoney + totalBet + totalBet);
         } else if (playerPoints === dealerPoints) {
           $('#messages').text('Push');
           $('#hit-button').prop('disabled', true);
